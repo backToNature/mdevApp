@@ -1,0 +1,31 @@
+{
+  "name": "mdevapp",
+  "version": "1.0.0",
+  "description": "single page build frame",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/backToNature/mdevApp.git"
+  },
+  "keywords": [
+    "mdev",
+    "build",
+    "app",
+    "frame"
+  ],
+  "author": "guohao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/backToNature/mdevApp/issues"
+  },
+  "homepage": "https://github.com/backToNature/mdevApp#readme",
+  "devDependencies": {
+    "nodejs-tools": "0.0.3",
+    "seajs-builder": "^1.2.4",
+    "uglify-js": "^2.6.2",
+    "walk": "^2.3.9"
+  }
+}
