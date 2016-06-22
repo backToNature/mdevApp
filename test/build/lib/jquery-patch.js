@@ -112,8 +112,8 @@
 }));
 
 (function ($) {
-    var dtd = $.Deferred();
     $.loadCss = function (url, callback) {
+        var dtd = $.Deferred();
         var container = document.getElementsByTagName("head")[0];
         var addStyle = document.createElement("link");
         addStyle.rel = "stylesheet";
@@ -125,6 +125,21 @@
         };
         addStyle.href = url;
         container.appendChild(addStyle);
+        return dtd;
+    };
+    $.loadJs = function (url, callback) {
+        var dtd = $.Deferred();
+        var doc = document,
+            head = doc.head || doc.getElementsByTagName("head")[0] || doc.documentElement,
+            script = doc.createElement("script");
+        script.type = "text/javascript";
+        script.charset = "utf-8";
+        script.onload = function () {
+            dtd.resolve();
+            callback && callback.call(this);
+        };
+        script.src = url;
+        head.insertBefore(script, head.firstChild);
         return dtd;
     };
 }(jQuery));

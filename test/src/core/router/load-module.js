@@ -56,7 +56,6 @@ define(function(require, exports, module) {
             var moduleName = _.last(item.split('/')).replace('.js', ''),
             $module = $currentWrapper.find('div[node-type="module"]').filter('.module-' + moduleName);
             var done = function () {
-                console.log(moduleName, window.mdevApp.exports);
                 $$module.set(moduleName, window.mdevApp.exports(data, $module, api, $$module.get('/')));
                 num ++;
                 if (num === newModuleList.length) {
@@ -67,7 +66,7 @@ define(function(require, exports, module) {
             if (debug === 'true') {
                 seajs.use([item.replace('.js', '.css'), item], done);
             } else {
-                $.when($.loadCss(item.replace('.js', '.css')), $.getScript(item.replace('.js', '.min.js')))
+                $.when($.loadCss(item.replace('.js', '.css')), $.loadJs(item.replace('.js', '.min.js')))
                 .done(done);
             }
         });
