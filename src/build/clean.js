@@ -14,14 +14,16 @@ fs.readdirSync(corePath).forEach(function (item) {
     }
 });
 tools.file.rmdir(path.join(process.cwd(), './build/util'));
+// tools.file.rm(path.join(process.cwd(), './build/static/tpl.js'));
+tools.file.rm(path.join(process.cwd(), './build/config.js'));
 
 walker  = walk.walk('./build/modules', { followLinks: false });
 
 walker.on("file", fileHandler);
-walker.on("errors", errorsHandler); // plural
+walker.on("errors", errorsHandler); // plural 
 walker.on("end", endHandler);
 
-function fileHandler(root, fileStat, next) {
+function fileHandler (root, fileStat, next) {
     if (fileStat.type === 'file' && (path.extname(fileStat.name) === '.js' || path.extname(fileStat.name) === '.html')) {
         var filePath = path.join(process.cwd(), root, fileStat.name);
         var moduleName = path.basename(path.dirname(filePath));

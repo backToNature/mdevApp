@@ -40,7 +40,8 @@ module.exports = (function () {
         '-v': showVersion,
         '-h': showHelp,
         'init': require('./src/init.js'),
-        'build': require('./src/build.js')
+        'build': require('./src/build.js'),
+        'start': require('./src/start.js')
     };
 
     if (map[process.argv[2]]) {

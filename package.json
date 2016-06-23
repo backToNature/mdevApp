@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/backToNature/mdevApp#readme",
   "devDependencies": {
+    "nodejs-server": "0.0.4",
     "nodejs-tools": "0.0.3",
     "seajs-builder": "^1.2.4",
     "uglify-js": "^2.6.2",

@@ -1,8 +1,16 @@
 /*loading动画*/
-body {
+/*body {
     background: #ed5565;
+}*/
+.global_loading_w {
+    width: 100%;
+    height: 100%;
+    background: #ed5565;
+    position: fixed;
+    top: 0;
+    z-index: 99999999;
 }
-.global_loading {
+.global_loading_w .global_loading {
     margin: 100px auto 0;
     width: 150px;
     text-align: center;
@@ -13,7 +21,7 @@ body {
     margin-left: -75px;
 }
 
-.global_loading > div {
+.global_loading_w .global_loading > div {
     width: 30px;
     height: 30px;
     background-color: #fff;
@@ -25,12 +33,12 @@ body {
     animation-fill-mode: both;
 }
 
-.global_loading .bounce1 {
+.global_loading_w .global_loading .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
  
-.global_loading .bounce2 {
+.global_loading_w .global_loading .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }

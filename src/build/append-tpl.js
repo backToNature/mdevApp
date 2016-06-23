@@ -1,0 +1,20 @@
+var path = require('path');
+var fs = require('fs');
+var util = require('util');
+
+var appendTpl = function(modulesDir) {
+    var tpl = 'define(function(require, exports, module) {var page = {%s};module.exports = page;});';
+    var single = "'%s': require('../modules/%s/%s.html'),";
+    var buffer = '';
+    fs.readdirSync(modulesDir).forEach(function(item) {
+        if (path.extname(item) === '') {
+            buffer += util.format(single, item, item, item);
+        }
+    });
+    buffer = buffer.substring(0, buffer.length - 1);
+    buffer = util.format(tpl, buffer);
+    fs.writeFile(path.join(process.cwd(), '/build/static/tpl.js'), buffer, 'utf8');
+};
+
+var modulePath = path.join(process.cwd(), './build/modules');
+appendTpl(modulePath);

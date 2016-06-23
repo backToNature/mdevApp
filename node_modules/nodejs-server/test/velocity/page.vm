@@ -1,0 +1,3 @@
+#set($pageName = 'page')
+
+The Page ${pageName} Is Ok .

@@ -15,10 +15,12 @@ var build = function () {
         return;
     }
     tools.file.cpdir(path.join(currentPath, '/src'), path.join(currentPath, '/build'));
+    require('./build/append-tpl.js');
     require('./build/build-html.js');
     require('./build/sea-build.js');
     require('./build/css-format.js');
     require('./build/clean.js');
+    require('./build/compress.js')
 }
 
 module.exports = build;

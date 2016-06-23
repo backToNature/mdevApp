@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
     var $$data = require('../util/data-center'),
-        debug = $.cookie()['debug_cookie'],
+        debug = $.cookie('debug_cookie'),
         $$module = require('./module'),
         modules = {};
 
@@ -28,14 +28,15 @@ define(function(require, exports, module) {
 
         var moduleReady = function () {
             if ($('.global_loading').css('display') === 'block') {
+                $('.main').css('opacity', 1);
+                require('./page-animate')(pageName);
                 window.setTimeout(function () {
-                    $('.main').transition({
-                        opacity: 1,
+                    $('.global_loading_w').transition({
+                        opacity: 0,
                         duration: 500,
                         easing: 'in-out',
                         complete: function() {
-                            $('.global_loading').hide();
-                            require('./page-animate')(pageName);
+                            $('.global_loading_w').hide();
                         }
                     });
                 }, 300);
