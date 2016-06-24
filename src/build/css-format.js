@@ -3,6 +3,8 @@ var path = require('path');
 var walk = require('walk');
 var px2em = require('./px2em');
 
+var CleanCSS = require('clean-css');
+
 var config = {
     ignorePath: [],
     formatPath: './build',
@@ -14,11 +16,7 @@ walker.on("file", fileHandler);
 walker.on("errors", errorsHandler); // plural
 walker.on("end", endHandler);
 
-var file, tag = false, num = 0, ready = 0;
-
-var formatEnd = function () {
-    console.log(7770);
-};
+var file, tag = false, cssFilePath, cssFile;
 
 function fileHandler(root, fileStat, next) {
     config.ignorePath.forEach(function (item) {
@@ -30,11 +28,10 @@ function fileHandler(root, fileStat, next) {
     });
     if (fileStat.type === 'file' && tag === false) {
         if (path.extname(fileStat.name) === '.css') {
-            num ++;
-            px2em(path.join(process.cwd(), root, fileStat.name), config.px, function () {
-                // console.log(num);
-                ready ++;
-                formatEnd();
+            cssFilePath = path.join(process.cwd(), root, fileStat.name);
+            px2em(cssFilePath, config.px, function () {
+                cssFile = fs.readFileSync(cssFilePath, 'utf8');
+                fs.writeFileSync(cssFilePath, new CleanCSS().minify(cssFile).styles, 'utf8');
             });
         }
     }
@@ -46,7 +43,6 @@ function errorsHandler(root, nodeStatsArray, next) {
 }
 
 function endHandler() {
-    formatEnd = function () {
-        console.log(8888);
-    };
+    
+
 }
