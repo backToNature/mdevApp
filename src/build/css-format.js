@@ -14,29 +14,39 @@ walker.on("file", fileHandler);
 walker.on("errors", errorsHandler); // plural
 walker.on("end", endHandler);
 
-var file, tag = false;
+var file, tag = false, num = 0, ready = 0;
+
+var formatEnd = function () {
+    console.log(7770);
+};
 
 function fileHandler(root, fileStat, next) {
     config.ignorePath.forEach(function (item) {
         if (root.split(path.sep).join('/').indexOf(item) >= 0) {
             tag = true;
         } else {
-            tag = false
+            tag = false;
         }
     });
     if (fileStat.type === 'file' && tag === false) {
         if (path.extname(fileStat.name) === '.css') {
-            px2em(path.join(process.cwd(), root, fileStat.name), config.px);
+            num ++;
+            px2em(path.join(process.cwd(), root, fileStat.name), config.px, function () {
+                // console.log(num);
+                ready ++;
+                formatEnd();
+            });
         }
     }
     next();
 }
 
 function errorsHandler(root, nodeStatsArray, next) {
-    console.log(root);
     next();
 }
 
 function endHandler() {
-    console.log("all done");
+    formatEnd = function () {
+        console.log(8888);
+    };
 }

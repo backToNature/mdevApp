@@ -14,7 +14,7 @@ fs.readdirSync(corePath).forEach(function (item) {
     }
 });
 tools.file.rmdir(path.join(process.cwd(), './build/util'));
-// tools.file.rm(path.join(process.cwd(), './build/static/tpl.js'));
+tools.file.rm(path.join(process.cwd(), './build/static/tpl.js'));
 tools.file.rm(path.join(process.cwd(), './build/config.js'));
 
 walker  = walk.walk('./build/modules', { followLinks: false });
@@ -39,6 +39,5 @@ function errorsHandler(root, nodeStatsArray, next) {
 }
 
 function endHandler() {
-    console.log("all done");
+    console.log("clean all done");
 }
-

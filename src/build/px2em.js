@@ -15,14 +15,14 @@ var reg = {
     // number
     num: /[^0-9.]+/g
 };
-var cssFormate = function (path, px) {
+var cssFormate = function (path, px, callback) {
     var file = fs.createReadStream(path);
     var fileContent = [];
     file.setEncoding('utf8');
     file.on('data', function (chunk) {
         fileContent = chunk.split('}');
         cssBlock(px, fileContent, function (emFile) {
-            emToFile(path, emFile);
+            emToFile(path, emFile, callback);
         });
     });
     file.on('end', function () {
@@ -61,9 +61,12 @@ var cssBlock = function (px, cssfile, callback) {
     callback(emFile);
 };
 
-var emToFile = function (path, emChunk) {
+var emToFile = function (path, emChunk, callback) {
     fs.writeFile(path, emChunk, 'utf-8', function () {
         console.log(path + '-->px2em success!');
+        if (callback) {
+            callback();
+        }
     });
 };
 

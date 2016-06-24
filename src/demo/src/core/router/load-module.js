@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
     var $$data = require('../util/data-center'),
-        debug = $.cookie()['debug_cookie'],
+        debug = window.mdevApp.debug,
         $$module = require('./module'),
         modules = {};
 
@@ -28,14 +28,15 @@ define(function(require, exports, module) {
 
         var moduleReady = function () {
             if ($('.global_loading').css('display') === 'block') {
+                $('.main').css('opacity', 1);
+                require('./page-animate')(pageName);
                 window.setTimeout(function () {
-                    $('.main').transition({
-                        opacity: 1,
+                    $('.global_loading_w').transition({
+                        opacity: 0,
                         duration: 500,
                         easing: 'in-out',
                         complete: function() {
-                            $('.global_loading').hide();
-                            require('./page-animate')(pageName);
+                            $('.global_loading_w').hide();
                         }
                     });
                 }, 300);
@@ -66,7 +67,7 @@ define(function(require, exports, module) {
             if (debug === 'true') {
                 seajs.use([item.replace('.js', '.css'), item], done);
             } else {
-                $.when($.loadCss(item.replace('.js', '.min.css')), $.getScript(item.replace('.js', '.min.js')))
+                $.when($.loadCss(item.replace('.js', '.css')), $.loadJs(item.replace('.js', '.min.js')))
                 .done(done);
             }
         });
