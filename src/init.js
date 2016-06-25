@@ -7,7 +7,8 @@ var init = function () {
         console.log('please remove the \'src\' floder before!');
     } else {
         tools.file.cpdir(path.join(__dirname, '../src/demo/src'), path.join(process.cwd(), '/src'));
-        tools.file.cp(path.join(__dirname, '../src/demo/.gitignore'), path.join(process.cwd(), '/.gitignore'));
+        var ignore = fs.readFileSync(path.join(__dirname, '../src/demo/ignore'), 'utf8');
+        fs.writeFileSync(path.join(process.cwd(), '/.gitignore'), ignore, 'utf8');
     }
 };
 module.exports = init;
