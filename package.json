@@ -1,6 +1,6 @@
 {
   "name": "mdevapp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "single page build frame",
   "main": "index.js",
   "scripts": {
