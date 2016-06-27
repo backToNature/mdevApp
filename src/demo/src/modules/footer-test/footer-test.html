@@ -5,15 +5,71 @@
 <div class="module-footer-test" node-type="module">
     #if ($status == 1)
         <div class="status-1">
-            
+            <ul class="flex footer-tabs">
+                <li class="cell" data-page="index">
+                    <div class="footer-icon footer-icon-comment"></div>
+                </li>
+                <li class="cell active" data-page="find">
+                    <div class="footer-icon footer-icon-reply"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-help"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-my"></div>
+                </li>
+            </ul>
         </div>
     #elseif ($status == 2)
         <div class="status-2">
-            
+            <ul class="flex footer-tabs">
+                <li class="cell" data-page="index">
+                    <div class="footer-icon footer-icon-comment"></div>
+                </li>
+                <li class="cell" data-page="find">
+                    <div class="footer-icon footer-icon-reply"></div>
+                </li>
+                <li class="cell active">
+                    <div class="footer-icon footer-icon-help"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-my"></div>
+                </li>
+            </ul>
+        </div>
+    #elseif ($status == 3)
+        <div class="status-2">
+            <ul class="flex footer-tabs">
+                <li class="cell" data-page="index">
+                    <div class="footer-icon footer-icon-comment"></div>
+                </li>
+                <li class="cell" data-page="find">
+                    <div class="footer-icon footer-icon-reply"></div>
+                </li>
+                <li class="cell active">
+                    <div class="footer-icon footer-icon-help"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-my"></div>
+                </li>
+            </ul>
         </div>
     #else
         <div class="status-0">
-            
+            <ul class="flex footer-tabs">
+                <li class="cell active" data-page="index">
+                    <div class="footer-icon footer-icon-comment"></div>
+                </li>
+                <li class="cell" data-page="find">
+                    <div class="footer-icon footer-icon-reply"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-help"></div>
+                </li>
+                <li class="cell">
+                    <div class="footer-icon footer-icon-my"></div>
+                </li>
+            </ul>
         </div>    
     #end
 </div>

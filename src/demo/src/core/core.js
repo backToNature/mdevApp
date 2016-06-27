@@ -7,7 +7,10 @@ define(function(require, exports, module) {
     // 初始化页面配置数据
     $$data.set('pageConfig', require('../config'));
     console.log($$data.get('pageConfig'));
-
+    // $('body').on('touchmove', function () {
+    //     return false;
+    // });
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     // 渲染页面
     var render = function (pageName, data) {
         if ($$data.get('currentPage')) {

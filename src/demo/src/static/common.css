@@ -1,7 +1,7 @@
 /*loading动画*/
-/*body {
-    background: #ed5565;
-}*/
+body {
+    background: #f0f0f0;
+}
 .global_loading_w {
     width: 100%;
     height: 100%;

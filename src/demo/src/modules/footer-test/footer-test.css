@@ -1,9 +1,74 @@
 .module-footer-test {
-
+    /*position: fixed;
+    bottom: 0;*/
 }
 
-.module-footer-test .status-0 {
+.module-footer-test {
     width: 100%;
-    height: 500px;
+    /*height: 500px;*/
     background: pink;
+    position: absolute;
+    bottom: 0;
+}
+
+.module-footer-test .footer-tabs {
+    padding: 5px 0;
+    background: #fff;
+    border-top: 1px solid #f6f6f6;
+}
+
+.module-footer-test li {
+    text-align: center;
+    line-height: 49.5px;
+    color: #777;
+}
+
+.module-footer-test li.active {
+    color: #529ff2;
+}
+
+.module-footer-test .footer-icon {
+    margin: 0 auto;
+    height: 40px;
+    width: 30px;
+}
+
+.module-footer-test .footer-icon.footer-icon-comment {
+    background: url('./imgs/icon-msg.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .active .footer-icon.footer-icon-comment {
+    background: url('./imgs/icon-msg-blue.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .footer-icon.footer-icon-reply {
+    background: url('./imgs/icon-reply.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .active .footer-icon.footer-icon-reply {
+    background: url('./imgs/icon-reply-blue.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .footer-icon.footer-icon-help {
+    background: url('./imgs/icon-help.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .active .footer-icon.footer-icon-help {
+    background: url('./imgs/icon-help-blue.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .footer-icon.footer-icon-my {
+    background: url('./imgs/icon-my.png') no-repeat;
+    background-size: 100%;
+}
+
+.module-footer-test .active .footer-icon.footer-icon-my {
+    background: url('./imgs/icon-my-blue.png') no-repeat;
+    background-size: 100%;
 }
