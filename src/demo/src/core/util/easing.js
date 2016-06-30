@@ -11,7 +11,9 @@ define(function(require, exports, module) {
                     if (isEaseOut) {
                         return;
                     }
-                    $wrapper.css('position', 'static');
+                    window.setTimeout(function () {
+                        $wrapper.css('position', 'static');
+                    }, 5)
                 }
             });
             $wrapper.transition({

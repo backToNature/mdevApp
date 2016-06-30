@@ -15,12 +15,17 @@
     "test": "make test"
   },
   "bin": {
-    "mdevapp": "./bin/mdevapp"
+    "mdevapp": "bin/mdevapp"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/backToNature/mdevApp.git"
   },
+  "files": [
+    "bin",
+    "src",
+    "LICENSE"
+  ],
   "keywords": [
     "mdev",
     "build",
