@@ -18,15 +18,52 @@ var reg = {
 var cssFormate = function (path, px, callback) {
     var file = fs.createReadStream(path);
     var fileContent = [];
+    var css = [];
     file.setEncoding('utf8');
     file.on('data', function (chunk) {
-        fileContent = chunk.split('}');
+        // 直接}来分割块会有问题 无法处理{}嵌套的情况
+        //fileContent = chunk.split('}');
+        fileContent = cssSplit(chunk);
         cssBlock(px, fileContent, function (emFile) {
             emToFile(path, emFile, callback);
         });
     });
     file.on('end', function () {
     });
+};
+
+var cssSplit = function (chunk) {
+    var stack = [];
+    var stackTmp = [];
+    var tmp = '';
+    var index = 0;
+    var fileContent = chunk.split('{');
+    for (var i = 0; i < fileContent.length; i++) {
+        if (i < fileContent.length - 1) fileContent[i] += '{';
+        if (fileContent[i].indexOf('}') !== -1) {
+            var right = fileContent[i].split('}');
+            for (var j = 0; j < right.length; j++) {
+                if (j < right.length - 1) right[j] += '}';
+                stack.push(right[j]);
+            }
+        } else {
+            stack.push(fileContent[i]);
+        }
+    }
+    stack.forEach(function (item) {
+        if (item.indexOf('{') !== -1) {
+            index++;
+        } else if (item.indexOf('}') !== -1) {
+            index--;
+        }
+        tmp += item;
+        if (index === 0) {
+            stackTmp.push(tmp);
+            tmp = '';
+        }
+    });
+
+    return stackTmp;
 };
 
 var pxToem = function (chunk, px) {
@@ -44,9 +81,9 @@ var cssBlock = function (px, cssfile, callback) {
     for (var i = 0; i < cssfile.length; i++) {
         var fontSize = 0;
 
-        if (cssfile[i].indexOf('{') !== -1) {
-            cssfile[i] += '}';
-        }
+        //if (cssfile[i].indexOf('{') !== -1) {
+        //    cssfile[i] += '}';
+        //}
         if (cssfile[i].indexOf('font-size') !== -1) {
             // 先把font-size/14处理
             cssfile[i] = cssfile[i].replace(reg.fontSize, function () {
