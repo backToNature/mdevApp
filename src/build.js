@@ -37,7 +37,7 @@ var build = function () {
 
     require('./build/clean.js');
     
-    require('./build/compress.js');
+    //require('./build/compress.js');
 }
 
 module.exports = build;
