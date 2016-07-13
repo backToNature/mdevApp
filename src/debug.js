@@ -40,6 +40,10 @@ var serverStart = function () {
     var nserver = new nodeServer(root, port);
     buildTpl(path.join(root, './modules'), path.join(root, './static/tpl.js'));
     require('./build/build-html')(path.join(process.cwd(), '/src/modules'));
+    nserver.config({
+        proxy: true,
+        allowExtension: ['.woff','.crx', '.mp4', '.apk', '.mp3']
+    });
     nserver.start();
 };
 module.exports = serverStart;
